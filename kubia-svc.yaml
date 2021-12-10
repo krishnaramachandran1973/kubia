@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: kubia
 spec:
+  type: LoadBalancer
   selector:
     app: kubia
   ports:
