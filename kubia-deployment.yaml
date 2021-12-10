@@ -6,7 +6,7 @@ data:
   mysql_db: kubia
   mysql_username: root
   mysql_password: root
-  mysql_server: ""
+  mysql_server: kubia-mysql
 
 
 ---
@@ -30,7 +30,7 @@ kind: Deployment
 metadata:
   name: kubia-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: kubia
@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
       - name: kubia
-        image: <Image>
+        image: krishnaramachandran1973/kubia:2.0
         env:
           - name: MYSQL_DB
             valueFrom:
@@ -63,10 +63,5 @@ spec:
                 configMapKeyRef:
                   name: kubia-config
                   key: mysql_server                        
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - containerPort: 8080
-
