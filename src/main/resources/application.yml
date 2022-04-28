@@ -3,10 +3,11 @@ management:
     enabled-by-default: true
     web:      exposure:        include:        - "*"
 spring:  datasource:
-    password: ${MYSQL_PASSWORD:root}
-    username: ${MYSQL_USERNAME:root}
-    url: jdbc:mysql://${MYSQL_SERVER:localhost}:3306/${MYSQL_DB:kubia}
+    password: sa
+    username: sa
+    url: jdbc:h2:mem:kubia
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
     show-sql: true    
