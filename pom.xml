@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.cts</groupId>
 	<artifactId>kubia</artifactId>
-	<version>3.0</version>
+	<version>1.0</version>
 	<name>kubia</name>
 	<description>Hello Kubernetes</description>
 	<properties>
