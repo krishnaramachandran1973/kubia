@@ -58,6 +58,7 @@ public class KubiaApplication {
 					.age(45)
 					.occupation("House Wife")
 					.build());
+			log.info("Data dump created");
 		};
 	}
 
