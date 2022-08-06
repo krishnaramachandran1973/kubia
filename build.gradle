@@ -37,6 +37,6 @@ jib {
     }
     to {
         image = 'krishnaramachandran1973/kubia'
-        tags = [project.version]
+        tags = ['unhealthy']
     }
 }
