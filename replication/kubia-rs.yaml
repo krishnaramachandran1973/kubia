@@ -15,5 +15,11 @@ spec:
       containers:
         - name: kubia
           image: krishnaramachandran1973/kubia:1.0
+          readinessProbe:
+            exec:
+              command:
+                - ls
+                - /var/ready
           ports:
-            - containerPort: 8080
+            - name: http
+              containerPort: 8080

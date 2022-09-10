@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: git-repo-volume
+spec:
+  containers:
+    - name: web-server
+      image: nginx:alpine
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: html
+      ports:
+        - containerPort: 80
+          protocol: TCP
+
+  volumes:
+    - name: html
+      gitRepo:
+        repository: https://github.com/krishnaramachandran1973/k8s-website.git
+        revision: main
+        directory: .

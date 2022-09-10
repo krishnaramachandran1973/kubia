@@ -33,10 +33,10 @@ tasks.named('test') {
 
 jib {
     from {
-        image = 'krishnaramachandran1973/amazoncorretto-with-bash:1.0'
+        image = 'krishnaramachandran1973/amazoncorretto-with-bash-curl:1.0'
     }
     to {
         image = 'krishnaramachandran1973/kubia'
-        tags = ['unhealthy']
+        tags = [project.version]
     }
 }
