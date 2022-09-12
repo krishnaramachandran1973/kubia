@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia
+
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: kubia
+      labels:
+        app: kubia
+    spec:
+      containers:
+        - name: kubia
+          image: krishnaramachandran1973/kubia:v1
+          imagePullPolicy: Always
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: kubia
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-svc
+spec:
+  selector:
+    app: kubia
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer

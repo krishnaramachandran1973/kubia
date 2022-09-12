@@ -32,7 +32,10 @@ public class KubiaApplication {
         String hostName = exchange.getRequest()
                 .getLocalAddress()
                 .getHostName();
-        return Mono.fromSupplier(() -> "You have hit " + hostName);
+        if (integer.incrementAndGet() > 5){
+            return Mono.error(() -> new RuntimeException("Error"));
+        }
+        return Mono.fromSupplier(() -> "This is v3 running in pod " + hostName + "\n");
     }
 
     @GetMapping("/alive")

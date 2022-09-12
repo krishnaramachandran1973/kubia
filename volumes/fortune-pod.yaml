@@ -17,7 +17,6 @@ spec:
         - mountPath: /usr/share/nginx/html
           name: html
           readOnly: true
-
       ports:
         - containerPort: 80
           protocol: TCP

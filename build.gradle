@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.cts'
-version = '1.0'
+version = 'v3'
 sourceCompatibility = '11'
 
 configurations {
