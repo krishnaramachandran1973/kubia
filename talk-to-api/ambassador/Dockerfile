@@ -1,4 +1,5 @@
-FROM alpine
-RUN apk update && apk add curl && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-ADD kubectl-proxy.sh /kubectl-proxy.sh
-ENTRYPOINT /kubectl-proxy.sh
+FROM bitnami/kubectl
+ENV API_SERVER="https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT" \
+    CA_CRT="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt" \
+    TOKEN="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)"
+ENTRYPOINT kubectl proxy --server="$API_SERVER" --certificate-authority="$CA_CRT" --token="$TOKEN"
